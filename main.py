@@ -1,11 +1,9 @@
 import os
 
-# Global variables
 users_file = "users.txt"
 scores_file = "scores.txt"
 user_data = {}
 
-# Quiz questions
 quizzes = {
     "Python": {
         1: ["What is the output of `print(2 ** 3)`?", "6", "8", "9", "10", "2"],
@@ -37,7 +35,6 @@ quizzes = {
 }
 
 
-# Initialize data files
 def initialize_files():
     if not os.path.exists(users_file):
         with open(users_file, "w") as f:
@@ -48,8 +45,6 @@ def initialize_files():
 
 
 def register_user():
-    """Register a new user."""
-    print("\n--- Registration ---")
     username = input("Enter your username: ")
     password = input("Enter your password: ")
 
@@ -68,8 +63,6 @@ def register_user():
 
 
 def login_user():
-    """Login an existing user."""
-    print("\n--- Login ---")
     username = input("Enter your username: ")
     password = input("Enter your password: ")
 
@@ -86,8 +79,6 @@ def login_user():
 
 
 def attempt_quiz(username, subject):
-    """Allow the user to attempt a quiz."""
-    print(f"\n--- {subject} Quiz ---")
     questions = quizzes.get(subject)
     if not questions:
         print("No questions available for this subject.")
@@ -109,14 +100,11 @@ def attempt_quiz(username, subject):
 
 
 def save_score(username, subject, score):
-    """Save user's score to the file."""
     with open(scores_file, "a") as f:
         f.write(f"{username}|{subject}|{score}\n")
 
 
 def show_results():
-    """Display the quiz results."""
-    print("\n--- Results ---")
     if not os.path.exists(scores_file):
         print("No results found.")
         return
@@ -130,7 +118,6 @@ def show_results():
 
 
 def display_banner():
-    """Display the main menu."""
     print("\n--- Welcome to the Quiz App ---")
     print("1. Register")
     print("2. Login")
@@ -144,7 +131,6 @@ def display_banner():
 
 
 def main():
-    """Main function to run the quiz app."""
     initialize_files()
     current_user = None
 
